@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     # Needed to silence warnings (and to be a worthwhile package)
-    name="reports_generator",
+    name="the_deep_reports_generator",
     # url="https://github.com/the-deep/deep-experiments/tree/test-summarization-lib",
     author="Data Friendly Space",
     author_email="",
