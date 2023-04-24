@@ -176,7 +176,7 @@ class ReportsGenerator:
         # #     n_clusters = (n_rows // 10) + 1
         # else:
         #     n_clusters = min(n_rows // 20, 25)
-        n_clusters = (n_rows // 5) + 1
+        n_clusters = (n_rows // 3) + 1
 
         if n_clusters == 1:
             return np.ones(n_rows)
