@@ -69,7 +69,7 @@ class ReportsGenerator:
         else:
             embeddings = self._get_embeddings_huggingface_models(cleaned_text)
 
-        return embeddings
+        return np.array(embeddings)
 
     def _get_embeddings_deep_inference_models(self, cleaned_text: List[str]):
         if not hasattr(self, "client"):
@@ -176,7 +176,7 @@ class ReportsGenerator:
         # #     n_clusters = (n_rows // 10) + 1
         # else:
         #     n_clusters = min(n_rows // 20, 25)
-        n_clusters = (n_rows // 3) + 1
+        n_clusters = (n_rows // 5) + 1
 
         if n_clusters == 1:
             return np.ones(n_rows)
