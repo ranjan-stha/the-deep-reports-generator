@@ -170,12 +170,13 @@ class ReportsGenerator:
         3 - HDBscan clustering
         """
         n_rows = embeddings.shape[0]
-        if n_rows <= 200:
-            n_clusters = (n_rows // 8) + 1
-        # elif n_rows <= 200:
+        # if n_rows <= 200:
         #     n_clusters = (n_rows // 5) + 1
-        else:
-            n_clusters = min(n_rows // 20, 25)
+        # # elif n_rows <= 200:
+        # #     n_clusters = (n_rows // 10) + 1
+        # else:
+        #     n_clusters = min(n_rows // 20, 25)
+        n_clusters = (n_rows // 5) + 1
 
         if n_clusters == 1:
             return np.ones(n_rows)
