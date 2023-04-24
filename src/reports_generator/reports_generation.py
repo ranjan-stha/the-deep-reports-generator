@@ -222,8 +222,8 @@ class ReportsGenerator:
 
         # set max cluster summary length
         n_words = get_n_words(ranked_sentences)
-        max_length_one_cluster = min(n_words, 256)
-        min_length_one_cluster = min(n_words // 2, 128)
+        max_length_one_cluster = min(n_words // 2, 256)
+        min_length_one_cluster = min(n_words // 4, 64)
 
         if max_length_one_cluster > 5:
             # summarize selected sentences
