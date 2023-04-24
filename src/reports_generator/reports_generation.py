@@ -176,7 +176,7 @@ class ReportsGenerator:
         # #     n_clusters = (n_rows // 10) + 1
         # else:
         #     n_clusters = min(n_rows // 20, 25)
-        n_clusters = (n_rows // 5) + 1
+        n_clusters = (n_rows // 10) + 1
 
         if n_clusters == 1:
             return np.ones(n_rows)
@@ -222,8 +222,8 @@ class ReportsGenerator:
 
         # set max cluster summary length
         n_words = get_n_words(ranked_sentences)
-        max_length_one_cluster = min(n_words // 2, 256)
-        min_length_one_cluster = min(max(16, n_words // 4), 64)
+        max_length_one_cluster = min(n_words // 2, 128)
+        min_length_one_cluster = min(max(16, n_words // 4), 32)
 
         if max_length_one_cluster > 5:
             # summarize selected sentences
@@ -304,7 +304,7 @@ class ReportsGenerator:
     def __call__(
         self,
         entries: Union[str, List[str]],
-        n_iterations: int = 2,
+        n_iterations: int = 1,
         force_huggingface_embeddings: bool = False,
         deployed_endpoint_name: str = None,
     ) -> str:
