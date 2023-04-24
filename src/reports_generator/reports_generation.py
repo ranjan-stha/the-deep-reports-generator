@@ -110,7 +110,6 @@ class ReportsGenerator:
         return output
 
     def _get_embeddings_huggingface_models(self, cleaned_text: List[str]):
-
         if not hasattr(self, "embeddings_model"):
             self.embeddings_model = AutoModel.from_pretrained(
                 self.sentence_embedding_model_name
@@ -171,12 +170,12 @@ class ReportsGenerator:
         3 - HDBscan clustering
         """
         n_rows = embeddings.shape[0]
-        if n_rows <= 100:
-            n_clusters = (n_rows // 5) + 1
-        elif n_rows <= 200:
-            n_clusters = (n_rows // 10) + 1
+        if n_rows <= 200:
+            n_clusters = (n_rows // 8) + 1
+        # elif n_rows <= 200:
+        #     n_clusters = (n_rows // 5) + 1
         else:
-            n_clusters = min(n_rows // 20, 10)
+            n_clusters = min(n_rows // 20, 25)
 
         if n_clusters == 1:
             return np.ones(n_rows)
@@ -222,8 +221,8 @@ class ReportsGenerator:
 
         # set max cluster summary length
         n_words = get_n_words(ranked_sentences)
-        max_length_one_cluster = min(n_words, 128)
-        min_length_one_cluster = min(n_words // 4, 56)
+        max_length_one_cluster = min(n_words, 256)
+        min_length_one_cluster = min(n_words // 2, 128)
 
         if max_length_one_cluster > 5:
             # summarize selected sentences
@@ -277,7 +276,6 @@ class ReportsGenerator:
         return summarized_entries_per_cluster
 
     def _summarization_iteration(self, entries: Union[str, List[str]]) -> List[str]:
-
         # Get embeddings
         if type(entries) is str:
             entries = _sentence_tokenize(entries)
@@ -289,7 +287,6 @@ class ReportsGenerator:
         n_clusters = len(list(set(cluster_labels)))
 
         if n_clusters == 1:
-
             summarized_entries = [
                 self._summarize_one_cluster(entries, entries_embeddings)
             ]
