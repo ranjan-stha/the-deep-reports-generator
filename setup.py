@@ -18,7 +18,7 @@ setup(
         "protobuf==3.19.5",
         "networkx>=2.0",
         "pandas>=1.2.4",
-        "boto3>=1.17.76",
+        "boto3==*",
         # "nltk>=3.6.7",
         "transformers>=4.9.2",
         "torch@http://download.pytorch.org/whl/cpu/torch-1.9.1%2Bcpu-cp38-cp38-linux_x86_64.whl",
